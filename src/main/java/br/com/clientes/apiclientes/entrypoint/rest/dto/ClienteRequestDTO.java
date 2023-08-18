@@ -17,14 +17,14 @@ public class ClienteRequestDTO {
     private String nome;
 
     private String email;
-
-    private String senha;
-
-    private Integer idade;
-
-    private Double salario;
-
-    private String cep;
-
-    private AutorizacaoEnum autorizacao;
+//
+//    private String senha;
+//
+//    private Integer idade;
+//
+//    private Double salario;
+//
+//    private String cep;
+//
+//    private AutorizacaoEnum autorizacao;
 }

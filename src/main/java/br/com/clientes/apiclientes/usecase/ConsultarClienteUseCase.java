@@ -1,26 +1,24 @@
 package br.com.clientes.apiclientes.usecase;
 
 import br.com.clientes.apiclientes.dataprovider.jpa.entity.Cliente;
-import br.com.clientes.apiclientes.entrypoint.rest.dto.ClienteRequestDTO;
 import br.com.clientes.apiclientes.entrypoint.rest.dto.ClienteResponseDTO;
 import br.com.clientes.apiclientes.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 @Component
-public class CriarClienteUseCase {
+public class ConsultarClienteUseCase {
 
     @Autowired
     private ClienteService service;
 
-public void execute(ClienteRequestDTO request){
-    try {
-//        ClienteResponseDTO  response = service.incluir(request);
-        service.incluir(request);
+    public List<Cliente> execute() {
 
-    }catch (Exception e){
+        return service.pesquisarClientes();
 
     }
-}
 
 }

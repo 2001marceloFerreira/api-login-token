@@ -34,6 +34,8 @@ spring:
     show-sql: true
     properties:
       database-plataform: org.hibernate.dialect.PostgreSQLDialect
+#    hibernate:
+#      ddl-auto: create
 
   flyway:
     url: ${spring.datasource.url}
@@ -44,3 +46,4 @@ spring:
 springdoc:
   swagger-ui:
     enabled: true
+    operationsSorter: ['POST','PUT','GET','DELETE']

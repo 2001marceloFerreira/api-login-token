@@ -21,10 +21,7 @@ public class Cliente {
 
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator"
-    )
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", nullable = false, unique = true)
     private UUID id;
 
@@ -34,23 +31,24 @@ public class Cliente {
     @Column(name = "email", nullable = false, updatable = false)
     private String email;
 
-    @Column(name = "senha", nullable = false, updatable = false)
-    private String senha;
-
-    @Column(name = "idade", nullable = false, updatable = false)
-    private Integer idade;
-
-    @Column(name = "salario", nullable = false, updatable = false)
-    private Double salario;
-
-    @Column(name = "cep", nullable = false, updatable = false)
-    private String cep;
-
-    @Column(name = "dt_cadastro", nullable = false, updatable = false)
-    private LocalDate dtCadastro;
-
-    @Column(name = "autorizacao", nullable = false, updatable = false)
-    private AutorizacaoEnum autorizacao;
+//
+//    @Column(name = "senha", nullable = false, updatable = false)
+//    private String senha;
+//
+//    @Column(name = "idade", nullable = false, updatable = false)
+//    private Integer idade;
+//
+//    @Column(name = "salario", nullable = false, updatable = false)
+//    private Double salario;
+//
+//    @Column(name = "cep", nullable = false, updatable = false)
+//    private String cep;
+//
+//    @Column(name = "dt_cadastro", nullable = false, updatable = false)
+//    private LocalDate dtCadastro;
+//
+//    @Column(name = "autorizacao", nullable = false, updatable = false)
+//    private AutorizacaoEnum autorizacao;
 
 
 
