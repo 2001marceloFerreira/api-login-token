@@ -25,10 +25,10 @@ public class Cliente {
     @Column(name = "id", nullable = false, unique = true)
     private UUID id;
 
-    @Column(name = "nome", nullable = false, updatable = false)
+    @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "email", nullable = false, updatable = false)
+    @Column(name = "email", nullable = false)
     private String email;
 
 //

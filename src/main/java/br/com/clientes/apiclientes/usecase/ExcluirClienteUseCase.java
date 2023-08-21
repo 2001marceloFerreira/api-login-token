@@ -16,10 +16,11 @@ public class ExcluirClienteUseCase {
 
     public void execute(UUID id) {
         try {
-             service.excluirCliente(id);
+            service.excluirCliente(id);
         } catch (Exception e) {
 
         }
+
     }
 
 }

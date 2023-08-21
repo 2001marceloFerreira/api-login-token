@@ -1,53 +1,43 @@
 package br.com.clientes.apiclientes.service;
 
-import br.com.clientes.apiclientes.common.ObjectExtensions;
-import br.com.clientes.apiclientes.dataprovider.jpa.ClienteRepository;
+import br.com.clientes.apiclientes.dataprovider.jpa.ClienteGatewayImpl;
 import br.com.clientes.apiclientes.dataprovider.jpa.entity.Cliente;
-import br.com.clientes.apiclientes.entrypoint.rest.dto.ClienteRequestDTO;
-import br.com.clientes.apiclientes.entrypoint.rest.dto.ClienteResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 
+@Transactional
 @Service
 public class ClienteService {
 
     @Autowired
-    private ClienteRepository clienteRepository;
+    private ClienteGatewayImpl clienteGateway;
 
-    public synchronized ClienteResponseDTO incluir(ClienteRequestDTO requestDTO){
 
-        Cliente cliente = ObjectExtensions.toObject(requestDTO, Cliente.class);
-
-        return ObjectExtensions.toObject(
-                clienteRepository.save(cliente),
-                ClienteResponseDTO.class);
+    public Cliente incluir(Cliente cliente) {
+        return clienteGateway.save(cliente);
     }
 
-    public List<Cliente> pesquisarClientes(){
-
-        return clienteRepository.findAll();
-
+    public List<Cliente> pesquisarClientes() {
+        return clienteGateway.findAll();
     }
 
-    public Cliente atualizarCliente(UUID id, Cliente cliente){
-        Cliente clienteAtual = clienteRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Entity nao encontrada"));
+    public Cliente atualizarCliente(UUID id, Cliente cliente) {
 
-        clienteAtual.setNome(cliente.getNome());
-        clienteAtual.setEmail(cliente.getEmail());
+        Cliente clienteExistente = clienteGateway.findById(id).orElseThrow(() -> null);
 
-        return clienteRepository.save(clienteAtual);
+        clienteExistente.setNome(cliente.getNome());
+        clienteExistente.setEmail(cliente.getEmail());
+
+        return clienteGateway.save(clienteExistente);
     }
 
-  public void excluirCliente(UUID id){
-       clienteRepository.deleteById(id);
-}
+    public void excluirCliente(UUID id) {
+        clienteGateway.deleteById(id);
+    }
 
 
 }
