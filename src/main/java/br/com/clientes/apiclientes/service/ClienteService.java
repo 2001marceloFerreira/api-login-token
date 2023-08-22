@@ -5,11 +5,10 @@ import br.com.clientes.apiclientes.dataprovider.jpa.entity.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 
-@Transactional
+
 @Service
 public class ClienteService {
 

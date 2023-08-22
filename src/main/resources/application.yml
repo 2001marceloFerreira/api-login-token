@@ -37,11 +37,11 @@ spring:
 #    hibernate:
 #      ddl-auto: create
 
-  flyway:
-    url: ${spring.datasource.url}
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-    out-of-order: true
+#  flyway:
+#    url: ${spring.datasource.url}
+#    user: ${spring.datasource.username}
+#    password: ${spring.datasource.password}
+#    out-of-order: true
 
 springdoc:
   swagger-ui:

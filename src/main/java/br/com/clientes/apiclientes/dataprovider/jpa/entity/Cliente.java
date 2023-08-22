@@ -1,20 +1,19 @@
 package br.com.clientes.apiclientes.dataprovider.jpa.entity;
 
-import br.com.clientes.apiclientes.model.dto.enums.AutorizacaoEnum;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
-import java.time.LocalDate;
+
 import java.util.UUID;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "clientes")
 @Data
 @Table(name = "clientes")
 public class Cliente {
