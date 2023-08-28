@@ -34,13 +34,16 @@ spring:
     show-sql: true
     properties:
       database-plataform: org.hibernate.dialect.PostgreSQLDialect
+#    hibernate:
+#      ddl-auto: create
 
-  flyway:
-    url: ${spring.datasource.url}
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-    out-of-order: true
+#  flyway:
+#    url: ${spring.datasource.url}
+#    user: ${spring.datasource.username}
+#    password: ${spring.datasource.password}
+#    out-of-order: true
 
 springdoc:
   swagger-ui:
     enabled: true
+    operationsSorter: ['POST','PUT','GET','DELETE']

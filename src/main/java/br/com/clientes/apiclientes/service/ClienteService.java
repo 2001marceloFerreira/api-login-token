@@ -1,26 +1,42 @@
 package br.com.clientes.apiclientes.service;
 
-import br.com.clientes.apiclientes.common.ObjectExtensions;
-import br.com.clientes.apiclientes.dataprovider.jpa.ClienteRepository;
+import br.com.clientes.apiclientes.dataprovider.jpa.ClienteGatewayImpl;
 import br.com.clientes.apiclientes.dataprovider.jpa.entity.Cliente;
-import br.com.clientes.apiclientes.entrypoint.rest.dto.ClienteRequestDTO;
-import br.com.clientes.apiclientes.entrypoint.rest.dto.ClienteResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.UUID;
+
 
 @Service
 public class ClienteService {
 
     @Autowired
-    private ClienteRepository clienteRepository;
+    private ClienteGatewayImpl clienteGateway;
 
-    public synchronized ClienteResponseDTO incluir(ClienteRequestDTO requestDTO){
 
-        Cliente cliente = ObjectExtensions.toObject(requestDTO, Cliente.class);
-
-        return ObjectExtensions.toObject(
-                clienteRepository.save(cliente),
-                ClienteResponseDTO.class);
+    public Cliente incluir(Cliente cliente) {
+        return clienteGateway.save(cliente);
     }
+
+    public List<Cliente> pesquisarClientes() {
+        return clienteGateway.findAll();
+    }
+
+    public Cliente atualizarCliente(UUID id, Cliente cliente) {
+
+        Cliente clienteExistente = clienteGateway.findById(id).orElseThrow(() -> null);
+
+        clienteExistente.setNome(cliente.getNome());
+        clienteExistente.setEmail(cliente.getEmail());
+
+        return clienteGateway.save(clienteExistente);
+    }
+
+    public void excluirCliente(UUID id) {
+        clienteGateway.deleteById(id);
+    }
+
 
 }

@@ -1,4 +1,4 @@
-package br.com.clientes.apiclientes.common;
+package br.com.clientes.apiclientes.commons;
 
 
 import br.com.clientes.apiclientes.config.JacksonConfiguration;
