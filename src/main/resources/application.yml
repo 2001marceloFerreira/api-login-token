@@ -34,16 +34,22 @@ spring:
     show-sql: true
     properties:
       database-plataform: org.hibernate.dialect.PostgreSQLDialect
-#    hibernate:
-#      ddl-auto: create
+    hibernate:
+      ddl-auto: update
 
 #  flyway:
 #    url: ${spring.datasource.url}
 #    user: ${spring.datasource.username}
 #    password: ${spring.datasource.password}
 #    out-of-order: true
-
+feign:
+  hystrix:
+    enabled: true
 springdoc:
   swagger-ui:
     enabled: true
     operationsSorter: ['POST','PUT','GET','DELETE']
+
+client:
+  viacep:
+    host: ${VIACEP_HOST:https://viacep.com.br/ws}
