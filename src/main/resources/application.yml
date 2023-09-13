@@ -36,6 +36,13 @@ spring:
       database-plataform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
+  security:
+    user:
+      name: admin
+      password: 123
+      roles: ADMIN
+#  spring.security.user.name=username
+#  spring.security.user.password=password
 
 #  flyway:
 #    url: ${spring.datasource.url}
