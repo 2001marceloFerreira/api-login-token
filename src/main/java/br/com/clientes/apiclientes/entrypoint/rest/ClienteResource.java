@@ -60,7 +60,7 @@ public class ClienteResource {
 
     @Tag(name = "Usuario")
     @Operation(summary = "Realiza a exclusão de um Cliente.")
-    @DeleteMapping
+    @DeleteMapping("/deletar")
     public void excluirCliente(@RequestParam("id") UUID id) {
         excluirClienteUseCase.execute(id);
     }
