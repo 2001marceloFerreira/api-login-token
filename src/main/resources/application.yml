@@ -36,11 +36,6 @@ spring:
       database-plataform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
-  security:
-    user:
-      name: admin
-      password: 123
-      roles: ADMIN
 #  spring.security.user.name=username
 #  spring.security.user.password=password
 
@@ -60,3 +55,8 @@ springdoc:
 client:
   viacep:
     host: ${VIACEP_HOST:https://viacep.com.br/ws}
+
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET:my-secret-key}

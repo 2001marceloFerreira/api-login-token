@@ -44,7 +44,7 @@ public class Cliente {
     @Column(name = "cep", nullable = false, updatable = false)
     private String cep;
 
-    @Column(name = "dt_cadastro", nullable = false, updatable = false)
+    @Column(name = "dt_cadastro")
     private LocalDate dtCadastro;
 
     @Column(name = "autorizacao", nullable = false, updatable = false)
