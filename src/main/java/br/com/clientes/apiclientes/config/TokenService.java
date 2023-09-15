@@ -19,13 +19,13 @@ public class TokenService {
 
     public String generateToken(User user){
         try{
-            Algorithm algorithm = Algorithm.HMAC256(secret);
+            Algorithm algorithm = Algorithm.HMAC256(secret); //onde passa a Secret(chave)
 
             String token = JWT.create()
-                    .withIssuer("auth-api")
-                    .withSubject(user.getLogin())
+                    .withIssuer("api-clientes") // quem criou este token
+                    .withSubject(user.getLogin()) //usuario que está recebendo
                     .withExpiresAt(genExpirationDate())
-                    .sign(algorithm);
+                    .sign(algorithm); //asinatura e geração final
 
             return token;
         } catch (JWTCreationException exception) {
@@ -47,6 +47,7 @@ public class TokenService {
     }
 
     private Instant genExpirationDate(){
+        // hora local - 2 horas de expiracao do token - timezone ideal para BSB (-3hrs)
         return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
     }
 }

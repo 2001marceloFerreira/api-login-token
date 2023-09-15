@@ -16,10 +16,25 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+// substitui o WebSecurityCoinfirerAdapter e tem um desaclopamento melhor
 public class SecurityConfig {
     @Autowired
     SecurityFilter securityFilter;
 
+    private static final String[] SWAGGER_WHITELIST = {
+            "/v2/api-docs",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/swagger-ui/**",
+            "/webjars/**"
+    };
+
+    // Diferença entre statfull e statles
+    // statfull -> Armazena informações da sessão do usuario(todas as sessões ativas)
+    // statles (mais usado) -> Recebe um token  para validar as requisições
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity)
             throws Exception {
@@ -30,7 +45,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        .requestMatchers("/swagger-ui/**").permitAll()
+
+                        .requestMatchers(SWAGGER_WHITELIST).permitAll()
                         .requestMatchers(HttpMethod.POST, "/v1/cliente").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/v1/cliente/deletar")
                         .hasRole("ADMIN")
@@ -49,6 +65,8 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(); //criptografia para senha
     }
+
+
 }
