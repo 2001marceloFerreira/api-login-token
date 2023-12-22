@@ -1,18 +1,7 @@
-# Kafka com Spring Boot e Docker
+# API de Autenticação
 
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
-![Kafka](https://img.shields.io/badge/kafka-4d4c4b.svg?style=for-the-badge&logo=kafka&logoColor=white)
+![Postgres](https://camo.githubusercontent.com/29e7fc6c62f61f432d3852fbfa4190ff07f397ca3bde27a8196bcd5beae3ff77/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f706f7374677265732d2532333331363139322e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d706f737467726573716c266c6f676f436f6c6f723d7768697465)
+![jwt](https://camo.githubusercontent.com/4590c0af4aeb1b75233885f86e80c1da8cb2afd401173a40e41370f5cad5db20/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a57542d626c61636b3f7374796c653d666f722d7468652d6261646765266c6f676f3d4a534f4e253230776562253230746f6b656e73)
 
-### 1 - Criar projetos Spring Boot
-   - Spring IO:  https://start.spring.io/
-  
-###   Dependencias:
-   - Web, Kafka e Lombok
-### 2 - Criar Docker-compose
- - kafka-docker-compose.yml: 
- - Comando para executar docker-compose no console de sua preferencia:
-  docker-compose -f kafka-docker-compose.yml up -d
-### 3 - Acessar Dashboard Kafdrop
- - Navegador de sua preferencia:
- - localhost:19000
